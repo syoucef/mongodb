@@ -4,6 +4,10 @@ L'objectif dans ce qui suit est d'installer et d'importer des données dans le S
 On lance les deux commandes suivantes ``mongod`` pour le serveur et ``mongo``pour le client. On commence par appréhender MongoDB, en utilisant le client ``mongo`` et puis utiliser un client graphique tel que ``Robo 3T``. 
 
 
+Pour créer une collection db.createCollection('amis');``
+
+
+
 Pour importer des données : ``$MONGO/bin/mongoimport --db my_db --collection restaurants $chemin/restaurants.json``
 
 
