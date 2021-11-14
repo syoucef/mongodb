@@ -10,7 +10,9 @@ Pour créer une collection `db.createCollection("amis");`
 
 Pour créer une deuxième collection `db.cretaeCollection("profesionels")`;
 
-Ajouter un document dans une collection `db.insert({"prenom":"samir"})`; 
+Ajouter un document dans une collection `db.amis.insert({"prenom":"samir"})`; 
+
+Il n'existe pas de schéma pour une base de données NoSQL en général. On peut donc insérer des éléments qui n'ont rien à voir les uns avec les autres. ``db.amis.insert({"numero":1234, "nom":"Alfred", "Tel":0665434343})``;
 
 
 
