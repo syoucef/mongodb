@@ -10,7 +10,7 @@ Pour créer une collection `db.createCollection("amis");`
 
 Pour créer une deuxième collection `db.cretaeCollection("profesionels")`;
 
-
+Ajouter un document dans une collection `db.insert({"prenom":"samir"})`; 
 
 
 
