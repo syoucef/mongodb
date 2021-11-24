@@ -18,6 +18,8 @@ Il n'existe pas de schéma pour une base de données NoSQL en général. On peut
 
 Le langage d'interoggartion d'une base de données MongoDB est propre à ce système et ne peut être utiliser pour interogger un autre de système de gestion de bases de données (contrairement à SQL). 
 
+Pour afficher toute les collections ``show collections;`` 
+
 
 
 
