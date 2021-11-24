@@ -3,7 +3,7 @@ L'objectif dans ce qui suit est d'installer et d'importer des données dans le S
 
 On lance les deux commandes suivantes ``mongod`` pour le serveur et ``mongo``pour le client. On commence par appréhender MongoDB, en utilisant le client ``mongo`` et puis utiliser un client graphique tel que ``Robo 3T``. 
 
-Remarque  : le dossier de sauvegarde par défaut de MongoDB est ``/data/db``.  Si vous ne voullez pas utiliser ce répertoire mais un autre ``mongod --dpath $repetoiredesauvegarde``
+Remarque  : le dossier de sauvegarde par défaut de MongoDB est ``/data/db``.  Si vous ne voullez pas utiliser ce répertoire mais un autre ``mongod --dpath $repetoiredesauvegarde``. Le port découte par défaut de MongoDB est ``27017``. 
 
 
 Pour créer une base de donnée `use contacts`;
