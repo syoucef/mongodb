@@ -6,7 +6,7 @@ On lance les deux commandes suivantes ``mongod`` pour le serveur et ``mongo``pou
 Remarque  : le dossier de sauvegarde des bases de données par défaut de MongoDB est ``/data/db``.  Si vous ne voullez pas utiliser ce répertoire mais un autre ``mongod --dpath $repetoiredesauvegarde``. Le port d'écoute par défaut de MongoDB est ``27017``. 
 
 
-Pour créer une base de donnée `use contacts`;
+Pour créer une base de donnée `use contacts`; (on utilise un intérpreteur Javascript). 
 
 Pour créer une collection `db.createCollection("amis");` 
 
