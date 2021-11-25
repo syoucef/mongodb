@@ -48,7 +48,12 @@ On peut faire une recherche en utilisant des motifs plus complexe ``db.amis.find
 
 
 
-# Protéger vos données grâce au réplicaSet
+# Protéger vos données grâce au ReplicaSet
+
+Pour instancier une Replicaset, par exemple composé de trois serveurs (un ``Primary`` et deux ``Secondary``), il faut définir :
+
+1. Un répertoire de stockage pour chaque serveur ;
+2. Lancer chacun des serveurs 
 
 
 
