@@ -71,7 +71,18 @@ La réoplication des données sert essentiellemnt à atteindre deux objectifs :
 
 1. Tolérance aux pannes : si un serveur, un disque tombe en panne, une données reste toujours disponible ;
 2. Scalabilité 
+	
+	2.1. Distribution des lectures : les lecteurs sont réparties sur plusieurs serveurs 
+	
+	2.2. Distribution des écritures 	si un serveur est très chargé en cas d'écriture, on utilise un autre serveur. Remarque : la plus part des systèmes ne distribuent des écriture (il faut réconcilier des données). 
+	
+	
+	Méthode générale de réplication : soit un client (X) et un serveur S1. Le client soumet une requête d'écriture au serveur. Le serveur écrit le document sur le disque et en cas de réplication transmet la demande aux autres serveurs s2, ..., sn qui feront de même et uniquement une fois que tous les serveurs ont terminé l'écriture sur disque  que le serveur s1 (serveur principal) envoie un acquittement au client.  C'est qu'on appelle le mode de réplication **Synchrone**.  C'est un mode qui favorise **la cohérence des données**. 
+	
+	Il existe un autre type (ou mode) de réplication dit **asynchrone**. Dans ce cas, le serveur s1 écrit sur son propre disque et rend la main au client X et transmet la demande d'écriture aux autres serveurs s2, ..., sn. C'est un mode qui favorise **les performances (temps de réponse)**.
 
+
+Trois copies pour une sécurité totale et deux au minimum.
 
 
 
