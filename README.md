@@ -24,7 +24,6 @@ Pour afficher tous les documents ``db.amis.find();``
 
 ``{ "_id" : ObjectId("619e30bbf168d42f513793ae"), "nom" : "Youcef", "telephone" : 14112994 }``MongoDB attribué un identifiant unique pour chaque document. On peut nous-mêmes donner un identifiant que l'on veut insérer ``db.amis.insert({"_id":1, "nom":"samuel", "Tel":065454321});``.  
 
-Pour importer des données : ``$MONGO/bin/mongoimport --db my_db --collection restaurants $chemin/restaurants.json``
 
 Pour parcourir toute une collection : ``db.films.find();``
 
@@ -37,6 +36,14 @@ Pour trier une collection ``db.films.find().sort({"nom":1})`` La valeur 1 est po
 Pour chercher un élément sachant son identifiant ``db.amis.find({"_id":1})``
 
 On peut faire une recherche en utilisant des motifs plus complexe ``db.amis.find({"nom":"Youcef", "telephone":14112994})``
+
+
+
+
+Télécharger le document json des restaurants de New-York. 
+
+Pour importer des données dans MongoDB : ``$MONGO/bin/mongoimport --db mabase --collection restaurants $chemin/restaurants.json``. ``mabase``est le nom de votre base de données, et ``restaurants``est le nom de votre collection. 
+
 
 
 #### Filtrage et projection avec un motif JSON
