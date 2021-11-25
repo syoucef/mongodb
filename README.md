@@ -60,6 +60,13 @@ Pour instancier une Replicaset, par exemple composé de trois serveurs (un ``Pri
 
 # Distribuer vos données avec MongoDB
 
+La réoplication des données sert essentiellemnt à atteindre deux objectifs :
+
+1. Tolérance aux pannes : si un serveur, un disque tombe en panne, une données reste toujours disponible ;
+2. Scalabilité 
+
+
+
 
 # Travail à rendre : 
 
