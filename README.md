@@ -1,4 +1,4 @@
-# Interrogation de MongoDB
+# Interrogation d'une base de données MongoDB
 L'objectif dans ce qui suit est d'installer et d'importer des données dans le SGBD MongoDB, un système NoSQL orienté documents. On commence par télécharger la version community qui se trouve à l'adresse suivante : https://www.mongodb.com/try/download/community (version 3.2.22)
 
 On lance les deux commandes suivantes ``mongod`` pour le serveur et ``mongo``pour le client. On commence par appréhender MongoDB, en utilisant le client ``mongo`` et puis utiliser un client graphique tel que ``Robo 3T``. 
@@ -53,6 +53,8 @@ Pour importer des données dans MongoDB : ``$MONGO/bin/mongoimport --db mabase -
 
 #### Mise à jour des données
 
+
+# Map-reduce 
 
 
 # Protéger vos données grâce au ReplicaSet
@@ -138,6 +140,7 @@ Pour définir un arbitre, comme pour le autre serveurs qui font partie de cette 
 
 
 
+**Remarque** pour limiter la taille du fichier log créer au moment du lancement du serveur, on peut utiliser l'option  ``--oplogSize 500``. 
 
 
 # Distribuer vos données avec MongoDB
@@ -146,7 +149,7 @@ Pour définir un arbitre, comme pour le autre serveurs qui font partie de cette 
 # Travail à rendre : 
 
 
-#### Exercice 
+#### Travail à rendre 
 
 Développer un micro-service qui utilise pour la persistance des données MongoDB. Créer une image Docker de votre service et renseigner le lien au début (vraiment au début) de votre redme.md pour la télécharger.  
 
