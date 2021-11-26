@@ -57,22 +57,16 @@ Pour importer des données dans MongoDB : ``$MONGO/bin/mongoimport --db mabase -
 
 # Protéger vos données grâce au ReplicaSet
 
-Pour instancier une Replicaset, par exemple composé de trois serveurs (un ``Primary`` et deux ``Secondary``), il faut définir :
-
-1. Un répertoire de stockage pour chaque serveur ;
-2. Lancer chacun des serveurs 
 
 
-
-
-# Distribuer vos données avec MongoDB
-
-La réoplication des données sert essentiellemnt à atteindre deux objectifs :
+La réplication des données sert essentiellement à atteindre deux objectifs :
 
 1. Tolérance aux pannes : si un serveur, un disque tombe en panne, une données reste toujours disponible ;
 2. Scalabilité 
 	
-	2.1. Distribution des lectures : les lecteurs sont réparties sur plusieurs serveurs 
+	
+	
+	2.1. Distribution des lectures : les lectures sont réparties sur plusieurs serveurs (scalabilité) 
 	
 	2.2. Distribution des écritures 	si un serveur est très chargé en cas d'écriture, on utilise un autre serveur. Remarque : la plus part des systèmes ne distribuent des écriture (il faut réconcilier des données). 
 	
@@ -84,6 +78,69 @@ La réoplication des données sert essentiellemnt à atteindre deux objectifs :
 
 Trois copies pour une sécurité totale et deux au minimum.
 
+
+#### Mise en oeuvre d'une architecture tolérante aux pannes avec MongoDB 
+
+
+
+![](replicasetmongodb.png)
+
+
+Pour instancier une Replicaset qui permet de gérer la tolérance aux pannes, par exemple composé de trois serveurs (un ``Primary`` et deux ``Secondary``), il faut définir. 
+
+**Bref rappel**  Une application (client) se connecte directement se connecte directemnent au serveur principal (``primary``) pour toutes opérations de lecture et d'écriture. On associe à ce serveur ``primary``un ensemble de serveurs ``secondary``. Ces derniers ont pour rôle de répliquer les données provenant du serveur ``primary`` . 
+
+1. Donner un nom au Replicatset ``test``
+2. Associer un port d'écoute pour chaque serveur
+3. Définir un répertoire de stockage pour chaque serveur 
+4. Lancer les serveurs
+5. A ce stade le ``replicaset``n'existe pas, il faut donc connecter les serveurs
+
+
+Soit data1, data2, data3 les répertoire de stockage des serveurs S1, S2 et S3 qui écoutent sur les port 27020, 27021, 27022 respectivemnent. 
+
+
+Pour connecter les serveurs, on procède de la façon suivante : 
+
+On lance les trois serveurs : 
+
+
+``mongod --replSet rscm --port 27021 --dbpath data1``, ``mongod --replSet rscm --port 27022 --dbpath data2`` et ``mongod --replSet rscm --port 27023 --dbpath data3``
+
+
+On se connecte au serveur principal S1, par exemple, ``mongo --port 27021`` et on initialise le replicaset ``rs.initiate(configuration)``. 
+
+Le contenu du fichier configuration est : 
+
+
+
+```json 
+rs.initiate(
+   {
+      _id: "test",
+      version: 1,
+      members: [
+         { _id: 0, host : "localhost:27021" },
+         { _id: 1, host : "localhost:27022" },
+         { _id: 2, host : "localhost:27023" }
+      ]
+   }
+)
+
+```
+
+Pour voir la configuration d'un replicaset ``rs.conf();``.   La méthode ``rs.status()``nous donne des information sur qui est le serveur ``primary``et qui sont les serveurs ``secondary``. 
+
+
+En cas de panne du serveur ``primary``, il peut y avoir un très grand délais de latence (dégradation donc des performance). Pour y remédier, on peut utiliser un serveur qui joue le rôle d'arbitre. 
+
+Pour définir un arbitre, comme pour le autre serveurs qui font partie de cette architecture tolérante aux pannes, on définit le répertoire de stockage ``dataar`` et le lancer : ``rs.addArb("localhost:20724");``. Pour pouvoir lancer un serveur qui jouera le rôle d'un arbitre, il faut absolument le faire à partir du serveur ``primary``. 
+
+
+
+
+
+# Distribuer vos données avec MongoDB
 
 
 # Travail à rendre : 
